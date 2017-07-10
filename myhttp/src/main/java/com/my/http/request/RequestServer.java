@@ -62,8 +62,8 @@ public class RequestServer {
     public static final int SOCKET_TIMEOUT = 2000;
     public static final String DEFAULT_CHARSET = "UTF-8";
 
-    public static final int COUNT = 5000;
-    public static final int THREADS_NUM = 10;
+    public static final int COUNT = 1000;
+    public static final int THREADS_NUM = 1;
     private static ExecutorService executors = Executors.newFixedThreadPool(THREADS_NUM);
     private static CountDownLatch latch = new CountDownLatch(COUNT);
 
@@ -88,7 +88,7 @@ public class RequestServer {
         final CloseableHttpClient httpClient = HttpClients.custom().setConnectionManager(connectionManager).build();
 //        final CloseableHttpClient httpClient = HttpClients.createDefault();
 
-        executor.execute(new IdleConnectionEvictor(connectionManager, 5000));
+//        executor.execute(new IdleConnectionEvictor(connectionManager, 5000));
 
         long start = System.currentTimeMillis();
 
